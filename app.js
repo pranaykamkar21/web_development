@@ -76,3 +76,41 @@ matchSelect.addEventListener("change", updateBookingSummary);
 standSelect.addEventListener("change", updateBookingSummary);
 quantityInput.addEventListener("change", updateBookingSummary);
 quantityInput.addEventListener("input", updateBookingSummary);
+
+const teamFilter = document.getElementById("team-filter");
+const matchCards = document.querySelectorAll(".match-card");
+
+teamFilter.addEventListener("change", function () {
+    const selectedTeam = teamFilter.value;
+
+    matchCards.forEach(function (card) {
+        const teams = card.getAttribute("data-teams").split(" ");
+        card.style.display = selectedTeam === "all" || teams.includes(selectedTeam)
+            ? ""
+            : "none";
+    });
+});
+
+const matchCardsContainer = document.getElementById("match-cards");
+const viewButtons = document.querySelectorAll(".view-button");
+
+viewButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        matchCardsContainer.classList.remove("grid-view", "list-view");
+        matchCardsContainer.classList.add(button.getAttribute("data-view") + "-view");
+
+        viewButtons.forEach(function (viewButton) {
+            const isSelected = viewButton === button;
+            viewButton.classList.toggle("active", isSelected);
+            viewButton.setAttribute("aria-pressed", isSelected);
+        });
+    });
+});
+
+const menuToggle = document.getElementById("menu-toggle");
+const mainNav = document.getElementById("main-nav");
+
+menuToggle.addEventListener("click", function () {
+    const isOpen = mainNav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", isOpen);
+});

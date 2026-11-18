@@ -36,9 +36,33 @@ header {
     color: white;
 }
 
+header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
 header h1 {
     margin: 0;
     font-size: 1.35rem;
+}
+
+.menu-toggle {
+    display: none;
+    width: 42px;
+    padding: 8px;
+    border: 1px solid rgb(255 255 255 / 55%);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 2px;
+    margin: 4px 0;
+    background: white;
 }
 
 nav ul {
@@ -166,6 +190,70 @@ section h3 {
 
 .about-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.match-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.match-cards.list-view {
+    grid-template-columns: 1fr;
+}
+
+.match-card {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-raised);
+}
+
+.match-card h3 {
+    margin-top: 0;
+}
+
+.match-card p {
+    margin: 0 0 12px;
+}
+
+.match-card a {
+    color: #ff6472;
+    font-weight: 700;
+}
+
+.schedule-controls {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.schedule-controls select {
+    display: block;
+}
+
+.view-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.view-button {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--surface-raised);
+    color: #f5f5f7;
+    font: inherit;
+    cursor: pointer;
+}
+
+.view-button.active {
+    border-color: var(--orange);
+    background: var(--orange);
+    color: #080809;
 }
 
 .guidelines-grid {
@@ -303,20 +391,45 @@ footer p {
     margin: 0;
 }
 
-@media (max-width: 760px) {
-    header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
+@media (max-width: 900px) {
     .about-grid,
     .booking-layout,
-    .guidelines-grid {
+    .guidelines-grid,
+    .match-cards {
         grid-template-columns: 1fr;
     }
 
     section {
         padding: 22px;
+    }
+}
+
+@media (max-width: 760px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    header .header-content {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        width: 100%;
+    }
+
+    header nav.open {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
     }
 }
 

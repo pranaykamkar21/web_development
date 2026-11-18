@@ -9,8 +9,15 @@
 </head>
 <body>
     <header id="home">
-        <h1>IPL 2026 Ticket Booking</h1>
-        <nav aria-label="Main navigation">
+        <div class="header-content">
+            <h1>IPL 2026 Ticket Booking</h1>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav id="main-nav" aria-label="Main navigation">
             <ul>
                 <li><a href="#matches">Matches</a></li>
                 <li><a href="#book-ticket">Book Ticket</a></li>
@@ -59,57 +66,50 @@
 
         <section id="matches" aria-labelledby="schedule-heading">
             <h2 id="schedule-heading">Match Schedule</h2>
-            <label for="team-filter">Filter by Team:</label>
-            <select id="team-filter" name="team-filter">
-                <option value="all">All Teams</option>
-                <option value="csk">Chennai Super Kings</option>
-                <option value="mi">Mumbai Indians</option>
-                <option value="rcb">Royal Challengers Bengaluru</option>
-                <option value="kkr">Kolkata Knight Riders</option>
-                <option value="dc">Delhi Capitals</option>
-                <option value="srh">Sunrisers Hyderabad</option>
-            </select>
+            <div class="schedule-controls">
+                <div>
+                    <label for="team-filter">Filter by Team:</label>
+                    <select id="team-filter" name="team-filter">
+                        <option value="all">All Teams</option>
+                        <option value="csk">Chennai Super Kings</option>
+                        <option value="mi">Mumbai Indians</option>
+                        <option value="rcb">Royal Challengers Bengaluru</option>
+                        <option value="kkr">Kolkata Knight Riders</option>
+                        <option value="dc">Delhi Capitals</option>
+                        <option value="srh">Sunrisers Hyderabad</option>
+                    </select>
+                </div>
+                <div class="view-controls" aria-label="Match view">
+                    <button class="view-button active" type="button" data-view="grid" aria-pressed="true">Grid View</button>
+                    <button class="view-button" type="button" data-view="list" aria-pressed="false">List View</button>
+                </div>
+            </div>
 
-            <div class="table-wrap">
-                <table border="1">
-                    <caption>IPL 2026 Match Schedule and Ticket Prices</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Match Number</th>
-                            <th scope="col">Teams</th>
-                            <th scope="col">Date &amp; Time</th>
-                            <th scope="col">Venue</th>
-                            <th scope="col">Ticket Prices</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Match 01</td>
-                            <td>Royal Challengers Bengaluru vs Mumbai Indians</td>
-                            <td>April 5, 2026, 7:30 PM</td>
-                            <td>Wankhede Stadium, Mumbai</td>
-                            <td>General: Rs. 1,500<br>Premium: Rs. 3,500<br>VIP: Rs. 7,500</td>
-                            <td><a class="match-book-link" href="#book-ticket">Book</a></td>
-                        </tr>
-                        <tr>
-                            <td>Match 02</td>
-                            <td>Chennai Super Kings vs Kolkata Knight Riders</td>
-                            <td>April 6, 2026, 7:30 PM</td>
-                            <td>M. A. Chidambaram Stadium, Chennai</td>
-                            <td>General: Rs. 1,200<br>Premium: Rs. 3,000<br>VIP: Rs. 6,500</td>
-                            <td><a class="match-book-link" href="#book-ticket">Book</a></td>
-                        </tr>
-                        <tr>
-                            <td>Match 03</td>
-                            <td>Delhi Capitals vs Sunrisers Hyderabad</td>
-                            <td>April 7, 2026, 7:30 PM</td>
-                            <td>Arun Jaitley Stadium, Delhi</td>
-                            <td>General: Rs. 1,000<br>Premium: Rs. 2,500<br>VIP: Rs. 5,500</td>
-                            <td><a class="match-book-link" href="#book-ticket">Book</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="match-cards grid-view" id="match-cards">
+                <article class="match-card" data-teams="rcb mi">
+                    <h3>Match 01</h3>
+                    <p><strong>Teams:</strong> Royal Challengers Bengaluru vs Mumbai Indians</p>
+                    <p><strong>Date &amp; Time:</strong> April 5, 2026, 7:30 PM</p>
+                    <p><strong>Venue:</strong> Wankhede Stadium, Mumbai</p>
+                    <p><strong>Ticket Prices:</strong><br>General: Rs. 1,500<br>Premium: Rs. 3,500<br>VIP: Rs. 7,500</p>
+                    <a class="match-book-link" href="#book-ticket">Book</a>
+                </article>
+                <article class="match-card" data-teams="csk kkr">
+                    <h3>Match 02</h3>
+                    <p><strong>Teams:</strong> Chennai Super Kings vs Kolkata Knight Riders</p>
+                    <p><strong>Date &amp; Time:</strong> April 6, 2026, 7:30 PM</p>
+                    <p><strong>Venue:</strong> M. A. Chidambaram Stadium, Chennai</p>
+                    <p><strong>Ticket Prices:</strong><br>General: Rs. 1,200<br>Premium: Rs. 3,000<br>VIP: Rs. 6,500</p>
+                    <a class="match-book-link" href="#book-ticket">Book</a>
+                </article>
+                <article class="match-card" data-teams="dc srh">
+                    <h3>Match 03</h3>
+                    <p><strong>Teams:</strong> Delhi Capitals vs Sunrisers Hyderabad</p>
+                    <p><strong>Date &amp; Time:</strong> April 7, 2026, 7:30 PM</p>
+                    <p><strong>Venue:</strong> Arun Jaitley Stadium, Delhi</p>
+                    <p><strong>Ticket Prices:</strong><br>General: Rs. 1,000<br>Premium: Rs. 2,500<br>VIP: Rs. 5,500</p>
+                    <a class="match-book-link" href="#book-ticket">Book</a>
+                </article>
             </div>
         </section>
 
