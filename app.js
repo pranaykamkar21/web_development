@@ -1,4 +1,4 @@
-﻿function showToast(message) {
+function showToast(message) {
     const toast = document.getElementById("toast");
     toast.textContent = message;
     toast.classList.add("show");
